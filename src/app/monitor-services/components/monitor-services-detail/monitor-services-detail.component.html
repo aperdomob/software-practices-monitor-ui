@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Code Analysis</h1>
+  <div style="display: block; height: 150px; width: 300px; margin: auto;">
+    <canvas
+      baseChart
+      [data]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [chartType]="doughnutChartType"
+      [colors]="pieChartColors"
+    >
+    </canvas>
+  </div>
+  <div *ngFor="let statistic of statistics.result" class="rule-container">
+    <h2>
+      <b>Rule: </b>{{ statistic.name }}
+      <i
+        class="fa"
+        [ngClass]="{
+          'fa-check-circle color-success': statistic.result === successCode,
+          'fa-times-circle color-error': statistic.result === errorCode
+        }"
+      ></i>
+    </h2>
+    <div *ngIf="statistic.result === errorCode" class="container">
+        <p><b>Message:</b> {{statistic.error.message}}</p>
+      <p *ngIf="statistic.error.expected != undefined">Expected: <span class="color-success">{{statistic.error.expected}}</span></p>
+      <p *ngIf="statistic.error.actual != undefined">Actual: <span class="color-error">{{statistic.error.actual}}</span></p>
+    </div>
+  </div>
+</div>
