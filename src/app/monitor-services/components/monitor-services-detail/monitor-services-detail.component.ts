@@ -24,19 +24,20 @@ export class MonitorServicesDetailComponent implements OnInit {
   ];
 
   public successCode = 'OK';
-  public errorCode = 'FAILED';
+  public errorCode = 'Fail';
 
   constructor(private readonly integrationsService: IntegrationsService) {}
 
   ngOnInit(): void {
-    this.setStatisticsById(this.integration.id);
+    this.setStatisticsById('github-manager');
   }
 
   setStatisticsById(id: string) {
-    console.log(id);
     this.integrationsService.getStatisticsById(id).subscribe((result) => {
       this.statistics = result;
-      this.doughnutChartData = [[this.statistics.ok, this.statistics.fail]];
+      this.doughnutChartData = [
+        [this.statistics.metrics.ok, this.statistics.metrics.fail],
+      ];
     });
   }
 
