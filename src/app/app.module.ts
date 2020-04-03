@@ -8,12 +8,7 @@ import { MonitorServicesModule } from './monitor-services/monitor-services.modul
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MonitorServicesModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MonitorServicesModule],
   providers: [],
   bootstrap: [AppComponent],
 })

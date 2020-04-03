@@ -35,9 +35,7 @@ export class MonitorServicesDetailComponent implements OnInit {
   setStatisticsById(id: string) {
     this.integrationsService.getStatisticsById(id).subscribe((result) => {
       this.statistics = result;
-      this.doughnutChartData = [
-        [this.statistics.metrics.ok, this.statistics.metrics.fail],
-      ];
+      this.doughnutChartData = [[this.statistics.metrics.ok, this.statistics.metrics.fail]];
     });
   }
 

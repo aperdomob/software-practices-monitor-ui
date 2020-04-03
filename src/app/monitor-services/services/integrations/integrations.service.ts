@@ -6,7 +6,8 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class IntegrationsService {  constructor(private readonly http: HttpClient) {}
+export class IntegrationsService {
+  constructor(private readonly http: HttpClient) {}
 
   getIntegrationsList(): Observable<IItegration[]> {
     return of([

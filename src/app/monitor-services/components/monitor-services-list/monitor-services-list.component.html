@@ -12,7 +12,10 @@
       </ng-container>
     </div>
     <div class="col-10">
-      <app-monitor-services-detail *ngIf="integrationSelected" [integration]="integrationSelected"></app-monitor-services-detail>
+      <div *ngIf="integrationSelected.id == 'github'">
+        <app-monitor-github-overview></app-monitor-github-overview>
+      </div>
+
     </div>
   </div>
 </div>
