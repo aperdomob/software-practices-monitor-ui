@@ -1,5 +1,10 @@
 {
-  "extends": ["tslint-config-airbnb", "tslint-angular", "tslint-plugin-prettier", "tslint-config-prettier"],
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-angular",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier"
+  ],
   "rules": {
     "prettier": true,
     "directive-selector": [true, "attribute", "app", "camelCase"],

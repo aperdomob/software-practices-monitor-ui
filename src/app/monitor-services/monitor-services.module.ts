@@ -8,7 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MonitorGithubOverviewComponent } from './components/monitor-github-overview/monitor-github-overview.component';
 
 @NgModule({
-  declarations: [MonitorServicesListComponent, MonitorServicesDetailComponent, MonitorGithubOverviewComponent],
+  declarations: [
+    MonitorServicesListComponent,
+    MonitorServicesDetailComponent,
+    MonitorGithubOverviewComponent,
+  ],
   imports: [CommonModule, MonitorServicesRoutingModule, ChartsModule, HttpClientModule],
 })
 export class MonitorServicesModule {}

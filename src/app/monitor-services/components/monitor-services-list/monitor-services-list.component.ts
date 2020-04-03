@@ -17,12 +17,16 @@ export class MonitorServicesListComponent implements OnInit {
   constructor(private readonly integrationsService: IntegrationsService) {}
 
   ngOnInit(): void {
-    this.integrationsService.getIntegrationsList().subscribe((list: IItegration[]) => (this.integrationsList = list));
+    this.integrationsService
+      .getIntegrationsList()
+      .subscribe((list: IItegration[]) => (this.integrationsList = list));
     this.setIntegrationActiveById('github');
   }
 
   setIntegrationActiveById(id: string) {
-    this.integrationsList.map((integration) => (integration.active = id === integration.id ? true : false));
+    this.integrationsList.map(
+      (integration) => (integration.active = id === integration.id ? true : false)
+    );
 
     this.integrationSelected = this.integrationsList.filter((integration) => integration.active)[0];
 
