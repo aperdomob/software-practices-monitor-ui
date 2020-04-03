@@ -1,1 +1,4 @@
 <p>monitor-github-overview works!</p>
+<ul *ngFor="let overview of repositories">
+  <li>{{overview.name}} - OK: {{overview.metrics.ok}} - Fail: {{overview.metrics.fail}}
+  </ul>

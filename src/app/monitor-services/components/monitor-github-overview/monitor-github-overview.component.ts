@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubConfigService } from '../../services/github/github-config.service';
+import { RepositoryOverview } from '../../interfaces/repository-overview';
 
 @Component({
   selector: 'app-monitor-github-overview',
@@ -6,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./monitor-github-overview.component.css'],
 })
 export class MonitorGithubOverviewComponent implements OnInit {
-  constructor() {}
+  repositories: RepositoryOverview[] = [];
 
-  ngOnInit(): void {}
+  constructor(private readonly githubConfigService: GithubConfigService) {}
+
+  ngOnInit(): void {
+    this.loadRepositories();
+  }
+
+  loadRepositories() {
+    this.githubConfigService.getAllRepositories().subscribe((repositories) => {
+      this.repositories = repositories;
+    });
+  }
 }
