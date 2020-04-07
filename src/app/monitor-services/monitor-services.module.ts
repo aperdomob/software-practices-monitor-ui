@@ -6,6 +6,7 @@ import { MonitorServicesDetailComponent } from './components/monitor-services-de
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
 import { MonitorGithubOverviewComponent } from './components/monitor-github-overview/monitor-github-overview.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,12 @@ import { MonitorGithubOverviewComponent } from './components/monitor-github-over
     MonitorServicesDetailComponent,
     MonitorGithubOverviewComponent,
   ],
-  imports: [CommonModule, MonitorServicesRoutingModule, ChartsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    MonitorServicesRoutingModule,
+    ChartsModule,
+    HttpClientModule,
+    MatCardModule,
+  ],
 })
-export class MonitorServicesModule {}
+export class MonitorServicesModule { }
