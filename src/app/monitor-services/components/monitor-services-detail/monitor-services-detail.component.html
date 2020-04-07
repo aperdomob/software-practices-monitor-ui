@@ -1,5 +1,6 @@
-<div class="container">
-  <h1>Code Analysis</h1>
+<div class="container" *ngIf="statistics">
+  <h1>{{statistics.name | uppercase}}</h1>
+  <a href="{{statistics.link}}" target="_blank">{{statistics.fullName}}</a>
   <div style="display: block; height: 150px; width: 300px; margin: auto;">
     <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
       [colors]="pieChartColors">

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IItegration } from '../../interfaces/IItegration';
 import { IntegrationsService } from '../../services/integrations/integrations.service';
 import { Label, MultiDataSet } from 'ng2-charts';
@@ -26,10 +27,13 @@ export class MonitorServicesDetailComponent implements OnInit {
   public successCode = 'OK';
   public errorCode = 'Fail';
 
-  constructor(private readonly integrationsService: IntegrationsService) {}
+  constructor(
+    private readonly integrationsService: IntegrationsService,
+    private readonly route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.setStatisticsById('github-manager');
+    this.setStatisticsById(this.route.snapshot.paramMap.get('id'));
   }
 
   setStatisticsById(id: string) {
