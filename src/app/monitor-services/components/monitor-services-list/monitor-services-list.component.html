@@ -1,21 +1,5 @@
 <div class="container-fluid">
   <div class="row dashboard-container">
-    <div class="col-2">
-      <ng-container *ngFor="let integration of integrationsList">
-        <div
-          class="integration-container"
-          [ngClass]="{ 'active-integration': integration.active }"
-          (click)="setIntegrationActiveById(integration.id)"
-        >
-          <img [src]="integration.iconPath" />
-        </div>
-      </ng-container>
-    </div>
-    <div class="col-10">
-      <div *ngIf="integrationSelected.id == 'github'">
-        <app-monitor-github-overview></app-monitor-github-overview>
-      </div>
-
-    </div>
+    <app-monitor-github-overview></app-monitor-github-overview>
   </div>
 </div>
