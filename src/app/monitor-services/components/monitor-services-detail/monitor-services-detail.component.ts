@@ -20,7 +20,7 @@ export class MonitorServicesDetailComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
   public pieChartColors = [
     {
-      backgroundColor: ['#8DD30B', '#F83F3C'],
+      backgroundColor: ['#52C41A', '#F5222D'],
     },
   ];
 

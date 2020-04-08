@@ -1,8 +1,7 @@
-
-
 registerLocaleData(en);
 
-registerLocaleData(en);import { BrowserModule } from '@angular/platform-browser';
+registerLocaleData(en);
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +17,16 @@ import { IconsProviderModule } from './icons-provider.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MonitorServicesModule, NgZorroAntdModule, FormsModule, HttpClientModule, IconsProviderModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MonitorServicesModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule,
+    IconsProviderModule,
+  ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
