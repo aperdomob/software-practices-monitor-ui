@@ -1,12 +1,32 @@
-<mat-card class="example-card" *ngFor="let overview of repositories">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title><a routerLink="/github-overview/{{overview.name}}">{{overview.name}}</a></mat-card-title>
-    <mat-card-subtitle>
-      <a href="{{overview.link}}" target="_blank">{{overview.fullName}}</a>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <canvas baseChart [data]="[[overview.metrics.ok, overview.metrics.fail]]" [labels]="doughnutChartLabels"
-    [chartType]="doughnutChartType" [colors]="pieChartColors">
-  </canvas>
-</mat-card>
+<div class="container-fluid">
+  <div>
+    <h2>
+      Dashboard
+    </h2>
+  </div>
+  <div class="row align-items-end">
+    <div class="col-md-4 col-sm-2 col-lg-3 card-git" *ngFor="let overview of repositories" >
+      <mat-card >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title
+            ><a routerLink="/github-overview/{{ overview.name }}">{{
+              overview.name
+            }}</a></mat-card-title
+          >
+          <mat-card-subtitle>
+            <a href="{{ overview.link }}" target="_blank">{{ overview.fullName }}</a>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <canvas
+          baseChart
+          [data]="[[overview.metrics.ok, overview.metrics.fail]]"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          [colors]="pieChartColors"
+        >
+        </canvas>
+      </mat-card>
+    </div>
+  </div>
+</div>

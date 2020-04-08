@@ -1,8 +1,15 @@
-.example-card {
-  max-width: 500px;
-}
-
 .example-header-image {
   background-image: url('/assets/icons/github.svg');
   background-size: cover;
+}
+
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  min-height: 290px;
+}
+.card-git {
+  min-height: 290px;
+  padding: 15px;
 }
