@@ -1,4 +1,27 @@
-<p>monitor-github-overview works!</p>
-<ul *ngFor="let overview of repositories">
-  <li>{{overview.name}} - OK: {{overview.metrics.ok}} - Fail: {{overview.metrics.fail}}
-  </ul>
+<div class="container-fluid">
+  <div class="row align-items-end">
+    <div class="col-md-4 col-sm-2 col-lg-3 card-git" *ngFor="let overview of repositories" >
+      <mat-card >
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title
+            ><a routerLink="/dashboard/github-overview/{{ overview.name }}">{{
+              overview.name
+            }}</a></mat-card-title
+          >
+          <mat-card-subtitle>
+            <a href="{{ overview.link }}" target="_blank">{{ overview.fullName }}</a>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <canvas
+          baseChart
+          [data]="[[overview.metrics.ok, overview.metrics.fail]]"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+          [colors]="pieChartColors"
+        >
+        </canvas>
+      </mat-card>
+    </div>
+  </div>
+</div>
