@@ -14,39 +14,37 @@
     </canvas>
   </div>
 
-  <ul>
-    <ng-container
-      *ngTemplateOutlet="recursiveListTmpl; context: { $implicit: statistics.rules }"
-    ></ng-container>
-  </ul>
+  <nz-table #expandTable [nzData]="statistics.rules" [nzFrontPagination]="false" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of expandTable.data">
+        <ng-container *ngFor="let item of mapOfExpandedData[data.key]">
+          <tr *ngIf="(item.parent && item.parent.expand) || !item.parent"
+            [ngClass]="{
+            'color-success': item.result === successCode,
+            'color-error': item.result === errorCode
+            }"
+          >
+            <td
+              [nzIndentSize]="item.level * 20"
+              [nzShowExpand]="item.children.length !== 0"
+              [(nzExpand)]="item.expand"
+              (nzExpandChange)="collapse(mapOfExpandedData[data.key], item, $event)"
+            >
 
-  <ng-template #recursiveListTmpl let-list>
-    <ul *ngFor="let item of list" class="rule-container">
-      <h2>
-        <b>Rule: </b>{{ item.name }}
-        <i
-          class="fa"
-          [ngClass]="{
-            'fa-check-circle color-success': item.result === successCode,
-            'fa-times-circle color-error': item.result === errorCode
-          }"
-        ></i>
-      </h2>
-      <div *ngIf="item.result === errorCode" class="container">
-        <p><b>Message:</b> {{ item.error.message }}</p>
-        <p *ngIf="item.error.expected != undefined">
-          Expected: <span class="color-success">{{ item.error.expected }}</span>
-        </p>
-        <p *ngIf="item.error.actual != undefined">
-          Actual: <span class="color-error">{{ item.error.actual }}</span>
-        </p>
-      </div>
-
-      <ul *ngIf="item.children.length > 0">
-        <ng-container
-          *ngTemplateOutlet="recursiveListTmpl; context: { $implicit: item.children }"
-        ></ng-container>
-      </ul>
-    </ul>
-  </ng-template>
+          {{ item.displayName ? item.displayName : item.name }}
+            </td>
+            <td>{{ item.result }}</td>
+            <td>{{ item.error &&  item.error.message ? item.error.message : '' }}</td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </tbody>
+  </nz-table>
 </div>
